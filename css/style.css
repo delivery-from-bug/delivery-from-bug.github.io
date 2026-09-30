@@ -8,7 +8,6 @@ html {
 body {
   margin: 0;
   overflow: hidden; /* no scroll bar */
-  touch-action: none; /* ignore touch like pinching zoom or swipe pan */
 }
 
 header, footer {
