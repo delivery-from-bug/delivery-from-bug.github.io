@@ -23,6 +23,11 @@ header, .education {
   display: flex;
 }
 
+.container {
+/*  min-width: 500px; */
+  margin: auto;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
@@ -40,6 +45,7 @@ h1 {
   padding-bottom: .67em;
   border-bottom: 1px solid;
   line-height: 1.3;
+  text-align: center;
 }
 
 h2 {
@@ -47,23 +53,9 @@ h2 {
   font-size: 30px;
   font-weight: 600;
   letter-spacing: 0.3px;
-  text-align: left;
+  text-align: center;
   color: #386641;
   padding: 10px 20px 0px 20px;
-}
-
-.wrapper img {
-  max-width: 100vh;
-  max-height: 100vh;
-  object-fit: scale-down;
-  width: auto;
-  height: auto;
-
-}
-
-
-.education {
-  background-color: #cf4420;
 }
 
 .wrapper {
@@ -76,19 +68,28 @@ h2 {
 
 }
 
-.test {
-  min-width: 100vw; 
-  background-image: url('../photo/wrapper.jpeg');
+.slide {
+  min-width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
+.slide-1 {
+  background-image: url('../photo/wrapper.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
+
+.education {
+  background-color: #cf4420;
+}
 
 .bio {
   color: #ffffff;
   font-size: 24px;
   font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
 }
 
 .project {
@@ -109,10 +110,6 @@ h2 {
 }
 
 
-.container {
-/*  min-width: 500px; */
-  margin: auto;
-}
 
 footer div {
   height: 100%;
@@ -132,17 +129,18 @@ footer div {
 
 .myButton {
   border-radius: 28px;
-  border: 1px solid #ffffff;
+  border: 3px solid #ffffff;
   cursor: pointer;
   color: #ffffff;
   font-size: 20px;
   padding: 16px 31px;
   text-decoration: none;
   margin: 1.69em auto;
+  background-color:rgba(0,0,0,0.5);
 }
 
 .myButton:hover {
-  background-color:rgba(0,0,0,0.2);
+  background-color:rgba(0,0,0,0.9);
 }
 
 .myButton:active {
