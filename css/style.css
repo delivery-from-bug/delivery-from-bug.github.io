@@ -1,6 +1,3 @@
-.clickable-div {
-    cursor: pointer;
-}
 
 /* Set the scroll behavior to smooth so that when you click the in the header, the screen scrolls down rather than jumps */
 html {
@@ -164,6 +161,7 @@ footer div {
   padding: 16px 31px;
   text-decoration: none;
   margin: 1.69em auto;
+  user-select: none;
 }
 
 /*
