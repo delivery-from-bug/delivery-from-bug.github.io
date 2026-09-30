@@ -91,20 +91,21 @@
       </div>
 
       <footer>
-          <div>
-              <p class="copyright">© Bug Lee 2026</p>
-          </div>
-          
-<script>
-$(document).ready(() => {
-function scrollToAnchor(aid){
-    var aTag = $(aid);
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
+        <div>
+            <p class="copyright">© Bug Lee 2026</p>
+        </div>
+        
+        <!-- javascript to make anchor link working on mobile-->
+        <script>
+        $(document).ready(() => {
+        function scrollToAnchor(aid){
+          var aTag = $(aid);
+          $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+        }
 
-scrollToAnchor(location.hash);
-})
-</script>
+        scrollToAnchor(location.hash);
+        })
+        </script>
       </footer>
 
     </div>
