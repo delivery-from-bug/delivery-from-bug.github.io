@@ -166,9 +166,10 @@ footer div {
   margin: 1.69em auto;
 }
 
+/*
 .myButton:hover {
   background-color:rgba(0,0,0,0.5);
-}
+}*/
 
 .myButton:active {
   position:relative;
