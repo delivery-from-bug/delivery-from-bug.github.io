@@ -109,6 +109,23 @@
 
     scrollToAnchor(location.hash);
     })
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+    
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        // Instantly or smoothly jump to the anchor element
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+          });
+        }
+      });
+    });
+ 
     </script>
   </body>
 </html>
