@@ -26,6 +26,7 @@ header, .slide {
 .container {
 /*  min-width: 500px; */
   margin: auto;
+  overflow: hidden;
 }
 
 h1 {
@@ -60,10 +61,11 @@ h2 {
 .slide {
   min-width: 100dvw; /* dynamically adjust to screen width for mobile. prevent user from zooming in or out */
   min-height: 100dvh; /* dynamically adjust to screen height for mobile prevent user from zooming in or out */
+  max-width: 100dvw; /* dynamically adjust to screen width */
+  max-height: 100dvh; /* dynamicaaly adjust to screen height */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
 }
 
 .slide-1 {
