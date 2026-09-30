@@ -2,7 +2,7 @@
 /* Set the scroll behavior to smooth so that when you click the in the header, the screen scrolls down rather than jumps */
 html {
   scroll-behavior: smooth;
-  /*overflow: hidden; */ /* does not work for mobile */
+  overflow: hidden;  
 }
 
 /* Set the margin to 0 to make sure the page stretches all the way to the edge of the browser window. */
