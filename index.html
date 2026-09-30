@@ -28,7 +28,7 @@
             Hello Elizabete! Ready for some fresh fish?
             </p>
             <div class="buttonBox">
-              <li onclick="window.location.href = '#slide-2';">
+              <li onclick="window.location.href = 'https://delivery-from-bug.github.io#slide-2';">
               <a class="myButton" href="#slide-2">Click here!</a>
               </li>
             </div>
@@ -101,4 +101,14 @@
     </div>
   </body>
 
+<script>
+$(document).ready(() => {
+function scrollToAnchor(aid){
+    var aTag = $(aid);
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+scrollToAnchor(location.hash);
+})
+</script>
 </html>
