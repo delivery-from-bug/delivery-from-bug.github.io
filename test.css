@@ -1,0 +1,88 @@
+/* Set the margin to 0 to make sure the page stretches all the way to the edge of the browser window. */
+body {
+  margin: 0;
+}
+
+header, footer {
+  background-color: #630031;
+}
+
+header, .slide {
+  font-family: Josefin Sans, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+  font-size: calc(1em + 3vw);
+  padding-bottom: .67em;
+  border-bottom: 1px solid;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.slide {
+  /* dynamically adjust to screen width/height for mobile */
+  min-width: 100dvw; 
+  min-height: 100dvh; 
+  max-width: 100dvw; 
+  max-height: 100dvh;
+  /* for backgroud img */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  transform: translateY(0);
+  transition: transform 1s ease;
+}
+
+.slide.end-state {
+  transform: translateY(-100dvh);
+}
+
+.words {
+  margin: auto;
+  padding: 50px;
+
+}
+
+.comment {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.myButton {
+  border-radius: 28px;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 16px 31px;
+  text-decoration: none;
+  margin: 1.69em auto;
+  user-select: none;
+  background-color:rgba(0,0,0,0.5);
+}
+
+.slide-1 {
+  background-image: url('photo/wrapper.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
+
+.slide-2 {
+  background-image: url('photo/box_opened.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
