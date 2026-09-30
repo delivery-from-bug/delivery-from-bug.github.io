@@ -1,3 +1,7 @@
+.clickable-div {
+    cursor: pointer;
+}
+
 /* Set the scroll behavior to smooth so that when you click the in the header, the screen scrolls down rather than jumps */
 html {
   scroll-behavior: smooth;
