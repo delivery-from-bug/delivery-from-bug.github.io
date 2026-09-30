@@ -7,6 +7,8 @@ html {
 /* Set the margin to 0 to make sure the page stretches all the way to the edge of the browser window. */
 body {
   margin: 0;
+  overflow: hidden; /* no scroll bar */
+  touch-action: none; /* ignore touch like pinching zoom or swipe pan */
 }
 
 header, footer {
@@ -26,7 +28,6 @@ header, .slide {
 .container {
 /*  min-width: 500px; */
   margin: auto;
-  overflow: hidden;
 }
 
 h1 {
@@ -59,6 +60,8 @@ h2 {
 }
 
 .slide {
+  /*min,max to screen size so even after zooming in or out slide will be screen
+   * size */
   min-width: 100dvw; /* dynamically adjust to screen width for mobile. prevent user from zooming in or out */
   min-height: 100dvh; /* dynamically adjust to screen height for mobile prevent user from zooming in or out */
   max-width: 100dvw; /* dynamically adjust to screen width */
