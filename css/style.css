@@ -1,7 +1,6 @@
 
 /* Set the scroll behavior to smooth so that when you click the in the header, the screen scrolls down rather than jumps */
 html {
-  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -57,7 +56,6 @@ h2 {
 
 /* 2. Re-enable interactions exclusively for your button */
 .disable-interaction .clickable {
-  overflow: auto;
   pointer-events: auto;       /* Re-allows clicks and taps */
   touch-action: auto;         /* Optional: allows default button touch states */
 }
