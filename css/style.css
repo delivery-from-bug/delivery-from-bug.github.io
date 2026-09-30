@@ -1,13 +1,13 @@
 
 /* Set the scroll behavior to smooth so that when you click the in the header, the screen scrolls down rather than jumps */
 html {
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
 /* Set the margin to 0 to make sure the page stretches all the way to the edge of the browser window. */
 body {
   margin: 0;
-  overflow: hidden; /* no scroll bar */
 }
 
 header, footer {
@@ -46,6 +46,20 @@ h2 {
   text-align: center;
   color: #386641;
   padding: 10px 20px 0px 20px;
+}
+
+/* 1. Block all interactions on the entire page/container */
+.disable-interaction {
+  pointer-events: none;       /* Disables all clicks, taps, and hovering */
+  user-select: none;          /* Prevents text selection/long-press highlighting */
+  touch-action: none;         /* Disables scrolling, zooming, and swiping gestures */
+}
+
+/* 2. Re-enable interactions exclusively for your button */
+.disable-interaction .clickable {
+  overflow: auto;
+  pointer-events: auto;       /* Re-allows clicks and taps */
+  touch-action: auto;         /* Optional: allows default button touch states */
 }
 
 .wrapper {
@@ -156,6 +170,7 @@ footer div {
   text-decoration: none;
   margin: 1.69em auto;
   user-select: none;
+  background-color:rgba(0,0,0,0.5);
 }
 
 /*
