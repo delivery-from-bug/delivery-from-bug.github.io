@@ -58,10 +58,12 @@ h2 {
 }
 
 .slide {
-  min-width: 100dvw; /* dynamically adjust to screen width for mobile */
+  min-width: 100dvw; /* dynamically adjust to screen width for mobile. prevent user from zooming in or out */
+  min-height: 100dvh; /* dynamically adjust to screen height for mobile prevent user from zooming in or out */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 .slide-1 {
