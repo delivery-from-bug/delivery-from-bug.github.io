@@ -94,6 +94,17 @@
           <div>
               <p class="copyright">© Bug Lee 2026</p>
           </div>
+          
+<script>
+$(document).ready(() => {
+function scrollToAnchor(aid){
+    var aTag = $(aid);
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+scrollToAnchor(location.hash);
+})
+</script>
       </footer>
 
     </div>
