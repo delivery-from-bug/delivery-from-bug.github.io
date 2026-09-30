@@ -16,7 +16,7 @@ header, footer {
 /*  min-width: 500px; */
 }
 
-header, .education {
+header, .slide {
   font-family: Josefin Sans, sans-serif;
   color: #fff;
   min-height: 100vh;
@@ -81,8 +81,17 @@ h2 {
   background-blend-mode: multiply;       /* Blends color and image together */
 }
 
-.education {
-  background-color: #cf4420;
+.slide-2 {
+  /* background-color: #cf4420; */
+  background-image: url('../photo/box_closed1.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
+
+.slide-3 {
+  background-image: url('../photo/box_opened.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
 }
 
 .bio {
@@ -136,11 +145,10 @@ footer div {
   padding: 16px 31px;
   text-decoration: none;
   margin: 1.69em auto;
-  background-color:rgba(0,0,0,0.5);
 }
 
 .myButton:hover {
-  background-color:rgba(0,0,0,0.9);
+  background-color:rgba(0,0,0,0.5);
 }
 
 .myButton:active {
