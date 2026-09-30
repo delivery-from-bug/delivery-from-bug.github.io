@@ -94,6 +94,21 @@ h2 {
   background-blend-mode: multiply;       /* Blends color and image together */
 }
 
+.slide-4 {
+  background-image: url('../photo/fish_and_knife.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
+
+.slide-5 {
+  background-color: #cf4420;
+}
+
+#bg-video {
+  max-height: 100vh;
+  object-fit: contain;
+}
+
 .bio {
   color: #ffffff;
   font-size: 24px;
