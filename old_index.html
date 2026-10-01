@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Korean Fish Delivery!!</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yeseva+One&display=swap" rel="stylesheet"> 
+    
+  </head>
+
+  <body>
+    <div class="container">
+
+      <header id="top">
+        <div class="slide slide-1">
+          <div class="wrapper">
+            <h1>Fish Delivery!</h1>
+            <p class="bio">
+            Hello Elizabete! Ready for some fresh fish?
+            </p>
+            <div class="buttonBox">
+              <a href="#testsubject" class="myButton">Click here!</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div id="testsubject" class="slide slide-2">
+        <div class="wrapper">
+          <h1>Step 1</h1>
+          <p class="bio">
+            If you haven't yet, open the box. 
+          </p>
+          <div class="buttonBox">
+            <a class="myButton" href="#top">NO!</a>
+            <a class="myButton" href="#slide-3">OK! I opened it!</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="slide-3" class="slide slide-3">
+        <div class="wrapper">
+          <h1>Step 2</h1>
+          <p class="bio">
+          Voila!! A fresh fishes from Korea! What you gonna do next?
+          </p>
+          <div class="buttonBox">
+            <a class="myButton" href="#slide-4">Gut the fish</a>
+            <a class="myButton" href="#slide-4">Open canned tuna</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="slide-4" class="slide slide-4">
+        <div class="wrapper">
+          <h1>Step 3</h1>
+          <p class="bio">
+          Prepare a sharpest knife... 
+          </p>
+          <div class="buttonBox">
+            <a class="myButton" href="#slide-3">NO!!</a>
+            <a class="myButton" href="#slide-5">YES!!</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="slide-5" class="slide slide-5">
+        <video controls id="bg-video">
+          <source
+          src="https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4" type="video/mp4">
+          Your browser does not support the html5 video.
+        </video>
+        <div class="wrapper">
+          <h1>Warning</h1>
+          <p class="bio">
+          ← The following video contain disturbing material for vegan.
+          </p>
+          <div class="buttonBox">
+            <a class="myButton" href="#slide-6">Done!!</a>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>
+            <p class="copyright">© Bug Lee 2026</p>
+        </div>
+        
+      </footer>
+
+    </div>
+
+    <!-- javascript to make anchor link working on mobile-->
+    <script>
+    $(document).ready(() => {
+    function scrollToAnchor(aid){
+      var aTag = $(aid);
+      $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+    }
+
+    scrollToAnchor(location.hash);
+    })
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+    
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        // Instantly or smoothly jump to the anchor element
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+          });
+        }
+      });
+    });
+ 
+    </script>
+  </body>
+</html>
