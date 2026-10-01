@@ -34,12 +34,28 @@ h1 {
   background-size: cover;
   background-position: center;
 
+
+}
+
+.slide-reveal {
+  background-image: url('photo/wrapper.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+}
+
+.slide-hidden {
+  background-image: url('photo/box_opened.jpeg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
+  background-blend-mode: multiply;       /* Blends color and image together */
+
+  position: absolute;
+  top: -100dvh;
   transform: translateY(0);
   transition: transform 1s ease;
 }
 
-.slide.end-state {
-  transform: translateY(-100dvh);
+.slide-hidden.end-state {
+  transform: translateY(100dvh);
 }
 
 .words {
@@ -56,13 +72,11 @@ h1 {
 }
 
 
-.buttonBox {
+.myButton {
   display: flex;
   justify-content: center;
   align-content: center;
-}
 
-.myButton {
   border-radius: 28px;
   border: 3px solid #ffffff;
   cursor: pointer;
@@ -75,14 +89,3 @@ h1 {
   background-color:rgba(0,0,0,0.5);
 }
 
-.slide-1 {
-  background-image: url('photo/wrapper.jpeg');
-  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
-  background-blend-mode: multiply;       /* Blends color and image together */
-}
-
-.slide-2 {
-  background-image: url('photo/box_opened.jpeg');
-  background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
-  background-blend-mode: multiply;       /* Blends color and image together */
-}
