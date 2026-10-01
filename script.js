@@ -11,6 +11,10 @@ const next_buttonA = document.getElementById("next_buttonA");
 const next_buttonB = document.getElementById("next_buttonB");
 const next_slide = document.getElementById("next_slide");
 
+const vid_slide = document.getElementById("vid_slide");
+const my_video = document.getElementById("my_video");
+const vid_source  = document.getElementById("vid_source");
+
 let slide_index = 0;
 
 //0
@@ -58,15 +62,22 @@ slides.push (
   {header:"Warning", 
     text:"The following content contain disturbing material for vegan.", 
     reply:["I'm vegan","OK!"],
-    next:[4,4],
+    next:[3,5],
     img:"",
     color:"#cf4420"
   });
 
 //5
 slides.push (
-  {video:'src="https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4"'
+  {header:"",
+    text:"",
+    reply:["",""],
+    next:[5,5],
+    img:"",
+    color:"rgba(0, 0, 0, 0)", /* transparent */
+    video:"https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4"
   });
+
 
 function loadNextSlide (option) {
   // set up next slide 
@@ -97,16 +108,30 @@ my_buttonB.addEventListener("click", () => {
 my_slide.addEventListener("transitionend", function(event) {
    // Ensure it is specifically the transform property that finished
   if (event.propertyName === "transform") {
-    // reset my slide position back to inside screen instantly
-    my_slide.style.transitionDuration = "0s";
-    my_slide.classList.toggle('end-state');
 
-    // copy next slide to current slide
-    my_header.textContent = slides[slide_index].header;
-    my_text.textContent = slides[slide_index].text;
-    my_buttonA.textContent = slides[slide_index].reply[0];
-    my_buttonB.textContent = slides[slide_index].reply[1];
-    my_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
-    my_slide.style.backgroundColor = slides[slide_index].color;
+    if (Object.hasOwn(slides[slide_index], "video")) {
+      vid_source.src = slides[slide_index].video;
+      my_video.load();
+      vid_slide.classList.toggle('end-state');
+    }
+    else 
+    {
+      // reset my slide position back to inside screen instantly
+      my_slide.style.transitionDuration = "0s";
+      my_slide.classList.toggle('end-state');
+
+      // copy next slide to current slide
+      my_header.textContent = slides[slide_index].header;
+      my_text.textContent = slides[slide_index].text;
+      my_buttonA.textContent = slides[slide_index].reply[0];
+      my_buttonB.textContent = slides[slide_index].reply[1];
+      my_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
+      my_slide.style.backgroundColor = slides[slide_index].color;
+    }
+
   }
+});
+
+my_video.addEventListener("ended", (event) => {
+  vid_slide.classList.toggle('end-state');
 });

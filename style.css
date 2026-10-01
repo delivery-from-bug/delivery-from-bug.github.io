@@ -41,7 +41,7 @@ h1 {
   background-image: url('photo/wrapper.jpeg');
   background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
   background-blend-mode: multiply;       /* Blends color and image together */
-  position: absolute;
+  position: absolute; /* seems like this bring slide on top of the stack */
   top: 0;
   transform: translateY(0);
   transition: transform 0.5s ease;
@@ -58,10 +58,22 @@ h1 {
   transform: translateY(-100dvh);
 }
 
+.slide-video {
+  object-fit: contain;
+  position: absolute; /* seems like this bring slide on top of the stack */
+  /*margin-top: -100dvh;*/
+  top: -100dvh;
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+}
+
+.slide-video.end-state {
+  transform: translateY(100dvh);
+}
+
 .words {
   margin: auto;
   padding: 50px;
-
 }
 
 .comment {
@@ -88,4 +100,5 @@ h1 {
   user-select: none;
   background-color:rgba(0,0,0,0.5);
 }
+
 
