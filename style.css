@@ -41,6 +41,10 @@ h1 {
   background-image: url('photo/wrapper.jpeg');
   background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
   background-blend-mode: multiply;       /* Blends color and image together */
+  position: absolute;
+  top: 0;
+  transform: translateY(0);
+  transition: transform 0.5s ease;
 }
 
 .slide-hidden {
@@ -48,14 +52,10 @@ h1 {
   background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
   background-blend-mode: multiply;       /* Blends color and image together */
 
-  position: absolute;
-  top: -100dvh;
-  transform: translateY(0);
-  transition: transform 1s ease;
 }
 
-.slide-hidden.end-state {
-  transform: translateY(100dvh);
+.slide-reveal.end-state {
+  transform: translateY(-100dvh);
 }
 
 .words {

@@ -19,7 +19,8 @@ let slides = [
     text:"Hello Elizabete! Ready for some fresh fish?", 
     reply:["","Click here!"], 
     next:[0,1],
-    img:"photo/wrapper.jpeg"
+    img:"photo/wrapper.jpeg",
+    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   }];
 
 //1
@@ -28,7 +29,8 @@ slides.push (
     text:"If you haven't yet, open the box.", 
     reply:["NO!","OK! I opened it!"], 
     next:[0,2], 
-    img:"photo/box_closed1.jpeg"
+    img:"photo/box_closed1.jpeg",
+    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
 
 //2
@@ -37,7 +39,8 @@ slides.push (
     text:"Voila!! A fresh fishes from Korea! What you gonna do next?", 
     reply:["Gut the fish", "Open canned tuna"],  
     next:[3,3],
-    img:"photo/box_opened.jpeg"
+    img:"photo/box_opened.jpeg",
+    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
 
 //3
@@ -46,7 +49,8 @@ slides.push (
     text:"Take out your sharpest knife...", 
     reply:["NO!!", "YES!!"], 
     next:[2,4],
-    img:"photo/fish_and_knife.jpeg" 
+    img:"photo/fish_and_knife.jpeg",
+    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
 
 //4
@@ -55,18 +59,29 @@ slides.push (
     text:"The following content contain disturbing material for vegan.", 
     reply:["I'm vegan","OK!"],
     next:[4,4],
-    img:""
+    img:"",
+    color:"#cf4420"
+  });
+
+//5
+slides.push (
+  {video:'src="https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4"'
   });
 
 function loadNextSlide (option) {
+  // set up next slide 
   slide_index = slides[slide_index].next[option];
-  next_slide.style.transitionDuration = "1s";
   next_header.textContent = slides[slide_index].header;
   next_text.textContent = slides[slide_index].text;
   next_buttonA.textContent = slides[slide_index].reply[0];
   next_buttonB.textContent = slides[slide_index].reply[1];
   next_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
-  next_slide.classList.toggle('end-state');
+  next_slide.style.backgroundColor = slides[slide_index].color;
+
+  // how fast slide will go out of screen
+  my_slide.style.transitionDuration = "0.5s";
+  // animate current slide out of screen
+  my_slide.classList.toggle('end-state');
 }
 
 // Button click 
@@ -79,12 +94,12 @@ my_buttonB.addEventListener("click", () => {
 });
 
 // Listen for the transition to finish
-next_slide.addEventListener("transitionend", function(event) {
+my_slide.addEventListener("transitionend", function(event) {
    // Ensure it is specifically the transform property that finished
   if (event.propertyName === "transform") {
-    // reset next slide position to out of screen
-    next_slide.style.transitionDuration = "0s";
-    next_slide.classList.toggle('end-state');
+    // reset my slide position back to inside screen instantly
+    my_slide.style.transitionDuration = "0s";
+    my_slide.classList.toggle('end-state');
 
     // copy next slide to current slide
     my_header.textContent = slides[slide_index].header;
@@ -92,5 +107,6 @@ next_slide.addEventListener("transitionend", function(event) {
     my_buttonA.textContent = slides[slide_index].reply[0];
     my_buttonB.textContent = slides[slide_index].reply[1];
     my_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
+    my_slide.style.backgroundColor = slides[slide_index].color;
   }
 });
