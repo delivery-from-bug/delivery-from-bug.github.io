@@ -158,16 +158,13 @@ my_video.addEventListener("ended", (event) => {
   loadNextSlide (1);
 });
 
-/*
+
 window.addEventListener('load', (event) => {
   view_point = my_slide.getBoundingClientRect();
   console.log (my_slide.offsetTop);
   console.log (view_point.top);
-  if (view_point.top < 0) {
-    my_slide.style.top = my_slide.style.top-view_point.top + "px";
-  }
 });
-*/
+
 
 // console log directly showing on device
 (function () {

@@ -42,7 +42,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
   background-blend-mode: multiply;       /* Blends color and image together */
   position: absolute; /* seems like this bring slide on top of the stack */
-  top: -50dvh;
+  top: 0;
   transform: translateY(0);
   transition: transform 0.5s ease;
 }
