@@ -1,7 +1,10 @@
+html {
+  overflow-anchor: none; /* Prevents mobile browsers from shifting the scroll view layout */
+}
+
 /* Set the margin to 0 to make sure the page stretches all the way to the edge of the browser window. */
 body {
   margin: 0;
-  position: relative; 
 }
 
 header, footer {
