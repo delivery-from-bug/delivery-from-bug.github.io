@@ -99,8 +99,18 @@ slides.push (
   {header:"Step 6", 
     text:"Open the Ice Pack", 
     reply:["Heck No!!","Done!"],
-    next:[7,7], 
+    next:[7,8], 
     img:"photo/ice_pack.jpeg",
+    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
+  });
+
+//8
+slides.push (
+  {header:"Well, that's it!", 
+    text:"From your friend, Bug", 
+    reply:["","Back to start"],
+    next:[0,0], 
+    img:"photo/the_end.gif",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
 
