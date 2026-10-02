@@ -159,11 +159,18 @@ my_video.addEventListener("ended", (event) => {
 });
 
 
+my_slide.style.top = "100px";
 window.addEventListener('load', (event) => {
   view_point = my_slide.getBoundingClientRect();
+  console.log ("before");
   console.log (my_slide.offsetTop);
   console.log (view_point.top);
-  my_slide.style.top = my_slide.offsetTop - view_point.top + "px";
+  if (view_point.top < 0) {
+    my_slide.style.top = my_slide.offsetTop - view_point.top + "px";
+    console.log ("after");
+    console.log (my_slide.offsetTop);
+    console.log (view_point.top);
+  }
 });
 
 
