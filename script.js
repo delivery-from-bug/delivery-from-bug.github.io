@@ -163,6 +163,7 @@ window.addEventListener('load', (event) => {
   view_point = my_slide.getBoundingClientRect();
   console.log (my_slide.offsetTop);
   console.log (view_point.top);
+  my_slide.style.top = my_slide.offsetTop - view_point.top + "px";
 });
 
 
