@@ -26,8 +26,8 @@ var visited = [];
 var slides = [
   {header:"Fish Delivery!", 
     text:"Hello Elizabete! Ready for some fresh fish?", 
-    reply:["","Click here!"], 
-    next:[0,1],
+    reply:["Click here!"], 
+    next:[1],
     img:"photo/wrapper.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   }];
@@ -36,8 +36,8 @@ var slides = [
 slides.push (
   {header:"Step 1", 
     text:"If you haven't yet, open the box.", 
-    reply:["NO!","OK! I opened it!"], 
-    next:[0,2], 
+    reply:["OK! I opened it!"], 
+    next:[2], 
     img:"photo/box_closed1.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -56,8 +56,8 @@ slides.push (
 slides.push (
   {header:"Step 3", 
     text:"Take out your sharpest knife...", 
-    reply:["Nope", "Ready!"], 
-    next:[2,4],
+    reply:["Ready!"], 
+    next:[4],
     img:"photo/fish_and_knife.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -66,8 +66,8 @@ slides.push (
 slides.push (
   {header:"Warning", 
     text:"The following content contain disturbing material for vegan.", 
-    reply:["","I'm not vegan"],
-    next:[4,5], 
+    reply:["I'm not vegan"],
+    next:[5], 
     img:"",
     color:"#cf4420",
     video:"https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4",
@@ -77,9 +77,9 @@ slides.push (
 //5
 slides.push (
   {header:"Step 4", 
-    text:"Save the fish guts and Korean Hoe. Need it for the next call!", 
-    reply:["Heck No!!","Alright!"],
-    next:[5,6], 
+    text:"Store the fish guts (blue thingy) and Korean Hoe for the next call!", 
+    reply:["Safely stored;)", "Nope"],
+    next:[6,5], 
     img:"photo/take_out_fish1.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -88,8 +88,8 @@ slides.push (
 slides.push (
   {header:"Step 5", 
     text:"Open canned Tuna.", 
-    reply:["Heck No!!","Done!"],
-    next:[6,3], 
+    reply:["Done!"],
+    next:[3], 
     img:"photo/canned_tuna.jpg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -97,9 +97,9 @@ slides.push (
 //7
 slides.push (
   {header:"Step 6", 
-    text:"Open the Ice Pack", 
-    reply:["Heck No!!","Done!"],
-    next:[7,8], 
+    text:"Dispose the Ice Pack. Cut it open and empty the chemical inside.", 
+    reply:["Finished!"],
+    next:[8], 
     img:"photo/ice_pack.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -108,18 +108,21 @@ slides.push (
 slides.push (
   {header:"Well, that's it!", 
     text:"From your friend, Bug", 
-    reply:["","Back to start"],
-    next:[0,0], 
+    reply:[],
+    next:[], 
     img:"photo/the_end.gif",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
+
+// init first slide
+loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
 
 function loadNextSlide (option) {
   // check if you visited all the slides (tuna and gutting)
   if (slide_index == TUNA || slide_index == GUTTING) {
     visited.push (slide_index);
     if (visited.includes(TUNA) && visited.includes(GUTTING)) {
-      slides[slide_index].next[1] = ICEPACK;
+      slides[slide_index].next[0] = ICEPACK;
     }
   }
   // set up video slide if it contain video
@@ -134,12 +137,7 @@ function loadNextSlide (option) {
   {
     // set up next slide 
     slide_index = slides[slide_index].next[option];
-    next_header.textContent = slides[slide_index].header;
-    next_text.textContent = slides[slide_index].text;
-    next_buttonA.textContent = slides[slide_index].reply[0];
-    next_buttonB.textContent = slides[slide_index].reply[1];
-    next_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
-    next_slide.style.backgroundColor = slides[slide_index].color;
+    loadSlide (next_header, next_text, next_buttonA, next_buttonB, next_slide);
 
     // how fast slide will go out of screen
     my_slide.style.transitionDuration = "0.5s";
@@ -165,23 +163,38 @@ my_slide.addEventListener("transitionend", function(event) {
     // reset my slide position back to inside screen instantly
     my_slide.style.transitionDuration = "0s";
     my_slide.classList.toggle('end-state');
-
-    // copy next slide to current slide
-    my_header.textContent = slides[slide_index].header;
-    my_text.textContent = slides[slide_index].text;
-    my_buttonA.textContent = slides[slide_index].reply[0];
-    my_buttonB.textContent = slides[slide_index].reply[1];
-    my_slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
-    my_slide.style.backgroundColor = slides[slide_index].color;
+    
+    loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
   }
 });
 
 my_video.addEventListener("ended", (event) => {
   vid_slide.classList.toggle('end-state');
-  loadNextSlide (1);
+  loadNextSlide (0);
 });
 
+function loadSlide (header, text, buttonA, buttonB, slide) {
+  // copy next slide to current slide
+  header.textContent = slides[slide_index].header;
+  text.textContent = slides[slide_index].text;
 
+  if (slides[slide_index].next.length >= 1) {
+    buttonA.style.display = "";
+    buttonA.textContent = slides[slide_index].reply[0];
+    if (slides[slide_index].next.length >= 2) {
+      buttonB.style.display = "";
+      buttonB.textContent = slides[slide_index].reply[1];
+    } else {
+      buttonB.style.display = "none";
+    }
+  } else {
+    buttonA.style.display = "none";
+  }
+  slide.style.backgroundImage = "url('" + slides[slide_index].img + "')";
+  slide.style.backgroundColor = slides[slide_index].color;
+}
+
+/*
 window.addEventListener('load', (event) => {
   my_slide.style.transform = "";
   view_point = my_slide.getBoundingClientRect();
@@ -195,6 +208,7 @@ window.addEventListener('load', (event) => {
     console.log (view_point.top);
   }
 });
+*/
 
 /*
 // console log directly showing on device
