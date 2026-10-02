@@ -158,3 +158,22 @@ my_video.addEventListener("ended", (event) => {
   loadNextSlide (1);
 });
 
+/*
+window.addEventListener('load', (event) => {
+  view_point = my_slide.getBoundingClientRect();
+  console.log (my_slide.offsetTop);
+  console.log (view_point.top);
+  if (view_point.top < 0) {
+    my_slide.style.top = my_slide.style.top-view_point.top + "px";
+  }
+});
+*/
+
+// console log directly showing on device
+(function () {
+  const el = document.createElement('div');
+  el.style.cssText = 'position:fixed;bottom:0;left:0;right:0;height:150px;background:black;color:lime;overflow:auto;z-index:99999;font-size:12px;';
+  document.body.appendChild(el);
+  console.log = (msg) => { el.innerHTML += msg + '<br>'; };
+})();
+
