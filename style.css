@@ -51,8 +51,6 @@ h1 {
   background-image: url('photo/box_closed1.jpeg');
   background-color: rgba(0, 0, 0, 0.5); /* Black opacity layer */
   background-blend-mode: multiply;       /* Blends color and image together */
-  position: absolute;
-  top: -50dvh;
 
 }
 

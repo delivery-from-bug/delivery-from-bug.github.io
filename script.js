@@ -14,9 +14,9 @@ const next_slide = document.getElementById("next_slide");
 const vid_slide = document.getElementById("vid_slide");
 const my_video = document.getElementById("my_video");
 const vid_source  = document.getElementById("vid_source");
-const PLAY_VID = 9999;
 
 let slide_index = 0;
+my_slide.style.top = "100px";
 
 //0
 let slides = [
