@@ -154,8 +154,8 @@ my_slide.addEventListener("transitionend", function(event) {
 });
 
 my_video.addEventListener("ended", (event) => {
-  vid_slide.classList.toggle('end-state');
-  loadNextSlide (1);
+  //vid_slide.classList.toggle('end-state');
+  //loadNextSlide (1);
 });
 
 
