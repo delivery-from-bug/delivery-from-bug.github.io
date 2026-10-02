@@ -16,6 +16,7 @@ const my_video = document.getElementById("my_video");
 const vid_source  = document.getElementById("vid_source");
 
 var slide_index = 0;
+var curr_step = 1;
 
 const TUNA = 6;
 const GUTTING = 5;
@@ -34,7 +35,7 @@ var slides = [
 
 //1
 slides.push (
-  {header:"Step 1", 
+  {header:"Step ", 
     text:"If you haven't yet, open the box.", 
     reply:["OK! I opened it!"], 
     next:[2], 
@@ -44,7 +45,7 @@ slides.push (
 
 //2
 slides.push (
-  {header:"Step 2", 
+  {header:"Step ", 
     text:"Voila!! A fresh fishes from Korea! What you gonna do next?", 
     reply:["Gut the fish", "Open canned tuna"],  
     next:[3, 6],
@@ -54,7 +55,7 @@ slides.push (
 
 //3
 slides.push (
-  {header:"Step 3", 
+  {header:"Step ", 
     text:"Take out your sharpest knife...", 
     reply:["Ready!"], 
     next:[4],
@@ -71,22 +72,27 @@ slides.push (
     img:"",
     color:"#cf4420",
     video:"https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4",
-    played:false
+    played:false,
+    video_button:0 // 0 for buttonA and 1 for buttonB
   });
 
 //5
 slides.push (
-  {header:"Step 4", 
+  {header:"Step ", 
     text:"Store the fish guts (blue thingy) and Korean Hoe for the next call!", 
     reply:["Safely stored;)", "Nope"],
-    next:[6,5], 
+    next:[6,6], 
     img:"photo/take_out_fish1.jpeg",
-    color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
+    color:"rgba(0, 0, 0, 0.5)", /* Black opacity layer */
+    video:"https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/tear.mp4",
+    played:false,
+    video_button:1 // 0 for buttonA and 1 for buttonB
   });
+
 
 //6
 slides.push (
-  {header:"Step 5", 
+  {header:"Step ", 
     text:"Open canned Tuna.", 
     reply:["Done!"],
     next:[3], 
@@ -96,7 +102,7 @@ slides.push (
 
 //7
 slides.push (
-  {header:"Step 6", 
+  {header:"Step ", 
     text:"Dispose the Ice Pack. Cut it open and empty the chemical inside.", 
     reply:["Finished!"],
     next:[8], 
@@ -114,6 +120,7 @@ slides.push (
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
 
+
 // init first slide
 loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
 
@@ -129,14 +136,20 @@ function loadNextSlide (option) {
   if (Object.hasOwn(slides[slide_index], "video")
       && !slides[slide_index].played) {
     slides[slide_index].played = true;
-    vid_source.src = slides[slide_index].video;
-    my_video.load();
-    vid_slide.classList.toggle('end-state');
+    if (slides[slide_index].video_button == option) {
+      vid_source.src = slides[slide_index].video;
+      my_video.load();
+      vid_slide.classList.toggle('end-state');
+    }
   }
   else 
   {
-    // set up next slide 
+    if (slides[slide_index].header == "Step ") {
+      curr_step++;
+    }
+    // slide index for next slide
     slide_index = slides[slide_index].next[option];
+    // set up next slide 
     loadSlide (next_header, next_text, next_buttonA, next_buttonB, next_slide);
 
     // how fast slide will go out of screen
@@ -175,7 +188,11 @@ my_video.addEventListener("ended", (event) => {
 
 function loadSlide (header, text, buttonA, buttonB, slide) {
   // copy next slide to current slide
-  header.textContent = slides[slide_index].header;
+  let new_header = slides[slide_index].header;
+  if (new_header == "Step ") {
+    new_header += curr_step;
+  }
+  header.textContent = new_header;
   text.textContent = slides[slide_index].text;
 
   if (slides[slide_index].next.length >= 1) {
