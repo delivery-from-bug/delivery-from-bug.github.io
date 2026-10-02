@@ -43,6 +43,7 @@ h1 {
   background-blend-mode: multiply;       /* Blends color and image together */
   position: absolute; /* seems like this bring slide on top of the stack */
   top: 0;
+  bottom: 0;
   transform: translateY(0);
   transition: transform 0.5s ease;
 }
@@ -62,7 +63,7 @@ h1 {
   object-fit: contain;
   position: absolute; /* seems like this bring slide on top of the stack */
   /*margin-top: -100dvh;*/
-  top: -50dvh;
+  top: -100dvh;
   transform: translateY(0);
   transition: transform 0.5s ease;
 }
