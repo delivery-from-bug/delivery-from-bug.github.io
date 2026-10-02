@@ -15,10 +15,15 @@ const vid_slide = document.getElementById("vid_slide");
 const my_video = document.getElementById("my_video");
 const vid_source  = document.getElementById("vid_source");
 
-let slide_index = 0;
+var slide_index = 0;
+
+const TUNA = 6;
+const GUTTING = 5;
+const ICEPACK = 7;
+var visited = [];
 
 //0
-let slides = [
+var slides = [
   {header:"Fish Delivery!", 
     text:"Hello Elizabete! Ready for some fresh fish?", 
     reply:["","Click here!"], 
@@ -42,7 +47,7 @@ slides.push (
   {header:"Step 2", 
     text:"Voila!! A fresh fishes from Korea! What you gonna do next?", 
     reply:["Gut the fish", "Open canned tuna"],  
-    next:[3,3],
+    next:[3, 6],
     img:"photo/box_opened.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -51,7 +56,7 @@ slides.push (
 slides.push (
   {header:"Step 3", 
     text:"Take out your sharpest knife...", 
-    reply:["NO!!", "YES!!"], 
+    reply:["Nope", "Ready!"], 
     next:[2,4],
     img:"photo/fish_and_knife.jpeg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
@@ -61,8 +66,8 @@ slides.push (
 slides.push (
   {header:"Warning", 
     text:"The following content contain disturbing material for vegan.", 
-    reply:["I'm vegan","OK!"],
-    next:[3,5], 
+    reply:["","I'm not vegan"],
+    next:[4,5], 
     img:"",
     color:"#cf4420",
     video:"https://github.com/delivery-from-bug/delivery-from-bug.github.io/raw/main/video/cut_open_fish.mp4",
@@ -82,9 +87,9 @@ slides.push (
 //6
 slides.push (
   {header:"Step 5", 
-    text:"Open the canned Tuna.", 
+    text:"Open canned Tuna.", 
     reply:["Heck No!!","Done!"],
-    next:[6,7], 
+    next:[6,3], 
     img:"photo/canned_tuna.jpg",
     color:"rgba(0, 0, 0, 0.5)" /* Black opacity layer */
   });
@@ -100,7 +105,14 @@ slides.push (
   });
 
 function loadNextSlide (option) {
-  // set up next slide 
+  // check if you visited all the slides (tuna and gutting)
+  if (slide_index == TUNA || slide_index == GUTTING) {
+    visited.push (slide_index);
+    if (visited.includes(TUNA) && visited.includes(GUTTING)) {
+      slides[slide_index].next[1] = ICEPACK;
+    }
+  }
+  // set up video slide if it contain video
   if (Object.hasOwn(slides[slide_index], "video")
       && !slides[slide_index].played) {
     slides[slide_index].played = true;
@@ -110,6 +122,7 @@ function loadNextSlide (option) {
   }
   else 
   {
+    // set up next slide 
     slide_index = slides[slide_index].next[option];
     next_header.textContent = slides[slide_index].header;
     next_text.textContent = slides[slide_index].text;
@@ -154,13 +167,13 @@ my_slide.addEventListener("transitionend", function(event) {
 });
 
 my_video.addEventListener("ended", (event) => {
-  //vid_slide.classList.toggle('end-state');
-  //loadNextSlide (1);
+  vid_slide.classList.toggle('end-state');
+  loadNextSlide (1);
 });
 
 
-my_slide.style.top = "100px";
 window.addEventListener('load', (event) => {
+  my_slide.style.transform = "";
   view_point = my_slide.getBoundingClientRect();
   console.log ("before");
   console.log (my_slide.offsetTop);
@@ -173,7 +186,7 @@ window.addEventListener('load', (event) => {
   }
 });
 
-
+/*
 // console log directly showing on device
 (function () {
   const el = document.createElement('div');
@@ -181,4 +194,5 @@ window.addEventListener('load', (event) => {
   document.body.appendChild(el);
   console.log = (msg) => { el.innerHTML += msg + '<br>'; };
 })();
+*/
 
