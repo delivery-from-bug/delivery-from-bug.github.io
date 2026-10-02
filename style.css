@@ -62,7 +62,7 @@ h1 {
   object-fit: contain;
   position: absolute; /* seems like this bring slide on top of the stack */
   /*margin-top: -100dvh;*/
-  top: -100dvh;
+  top: -50dvh;
   transform: translateY(0);
   transition: transform 0.5s ease;
 }

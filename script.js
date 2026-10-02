@@ -16,7 +16,6 @@ const my_video = document.getElementById("my_video");
 const vid_source  = document.getElementById("vid_source");
 
 let slide_index = 0;
-my_slide.style.top = "100px";
 
 //0
 let slides = [
@@ -158,3 +157,4 @@ my_video.addEventListener("ended", (event) => {
   vid_slide.classList.toggle('end-state');
   loadNextSlide (1);
 });
+
