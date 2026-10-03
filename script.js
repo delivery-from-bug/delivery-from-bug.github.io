@@ -223,6 +223,9 @@ function loadSlide (header, text, buttonA, buttonB, slide) {
 window.addEventListener('load', (event) => {
   // init first slide
   loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
+  // for just in case if first slide is off screen initially
+  my_slide.style.transitionDuration = "1ms";
+  my_slide.classList.toggle('end-state', true);
   /*
   my_slide.style.transform = "";
   view_point = my_slide.getBoundingClientRect();
