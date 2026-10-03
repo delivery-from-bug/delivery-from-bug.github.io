@@ -17,6 +17,7 @@ const vid_source  = document.getElementById("vid_source");
 
 var slide_index = 0;
 var curr_step = 1;
+var vid_watched = false; // for case where playing video multiple time on full screen
 
 const TUNA = 6;
 const GUTTING = 5;
@@ -121,8 +122,6 @@ slides.push (
   });
 
 
-// init first slide
-loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
 
 function loadNextSlide (option) {
   // check if you visited all the slides (tuna and gutting)
@@ -137,6 +136,7 @@ function loadNextSlide (option) {
       && !slides[slide_index].played) {
     slides[slide_index].played = true;
     if (slides[slide_index].video_button == option) {
+      vid_watched = false;
       vid_source.src = slides[slide_index].video;
       my_video.load();
       vid_slide.classList.toggle('end-state');
@@ -182,8 +182,17 @@ my_slide.addEventListener("transitionend", function(event) {
 });
 
 my_video.addEventListener("ended", (event) => {
-  vid_slide.classList.toggle('end-state');
-  loadNextSlide (0);
+  let on_screen = vid_slide.classList.toggle('end-state');
+  // in case user played video in even number (in full screen) which would
+  // toggle back to on-screen.
+  if (on_screen) {
+    vid_slide.classList.toggle('end-state');
+  }
+  // also to prevent skipping slide when user play video more than once.
+  if (!vid_watched) {
+    loadNextSlide (0);
+    vid_watched = true;
+  }
 });
 
 function loadSlide (header, text, buttonA, buttonB, slide) {
@@ -211,8 +220,10 @@ function loadSlide (header, text, buttonA, buttonB, slide) {
   slide.style.backgroundColor = slides[slide_index].color;
 }
 
-/*
 window.addEventListener('load', (event) => {
+  // init first slide
+  loadSlide (my_header, my_text, my_buttonA, my_buttonB, my_slide);
+  /*
   my_slide.style.transform = "";
   view_point = my_slide.getBoundingClientRect();
   console.log ("before");
@@ -224,8 +235,9 @@ window.addEventListener('load', (event) => {
     console.log (my_slide.offsetTop);
     console.log (view_point.top);
   }
+  */
 });
-*/
+
 
 /*
 // console log directly showing on device
