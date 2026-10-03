@@ -81,7 +81,7 @@ slides.push (
 slides.push (
   {header:"Step ", 
     text:"Store the fish guts (blue thingy) and Korean Hoe for the next call!", 
-    reply:["Safely stored;)", "Nope"],
+    reply:["Safely stored ;)", "Nope"],
     next:[6,6], 
     img:"photo/take_out_fish1.jpeg",
     color:"rgba(0, 0, 0, 0.5)", /* Black opacity layer */
@@ -133,14 +133,14 @@ function loadNextSlide (option) {
   }
   // set up video slide if it contain video
   if (Object.hasOwn(slides[slide_index], "video")
-      && !slides[slide_index].played) {
+      && !slides[slide_index].played
+      && slides[slide_index].video_button == option) {
+    
     slides[slide_index].played = true;
-    if (slides[slide_index].video_button == option) {
-      vid_watched = false;
-      vid_source.src = slides[slide_index].video;
-      my_video.load();
-      vid_slide.classList.toggle('end-state');
-    }
+    vid_watched = false;
+    vid_source.src = slides[slide_index].video;
+    my_video.load();
+    vid_slide.classList.toggle('end-state');
   }
   else 
   {
